@@ -37,9 +37,9 @@ const Header = () => {
   return (
     <div className="sticky top-0 z-50 w-full font-inter font-normal text-base shadow-md bg-background">
       {/* Navbar */}
-      <div className="flex justify-between items-center px-4 sm:px-6 lg:container mx-auto h-16 sm:h-20">
+      <div className="flex justify-between items-center px-4 sm:px-6 lg:container lg:mx-auto shadow-[0px_4px_4px_0px_rgba(0,0,0,0.05)] h-16 sm:h-20">
         {/* Logo */}
-        <div className="flex-shrink-0 z-10">
+        <div className="flex-shrink-0">
           <a href="/">
             <Image
               src={Logo}
@@ -98,132 +98,51 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Mobile Menu Button */}
-        <div className="lg:hidden relative z-50">
+        {/* Mobile Menu Button - Keeping exactly as is */}
+        <div className="lg:hidden relative">
           <button onClick={toggleMenu} className="p-2">
-            {!isMenuOpen ? (
-              <AlignRight size={24} className="sm:size-7" color={"#D8FF85"} />
-            ) : (
-              <IoCloseSharp size={24} className="sm:size-7" color={"#D8FF85"} />
-            )}
+            {!isMenuOpen && <AlignRight size={28} color={"#D8FF85"} />}
           </button>
-        </div>
-
-        {/* Mobile Menu Overlay */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
-                onClick={closeMenu}
-              />
-              
+          <AnimatePresence>
+            {isMenuOpen && (
               <motion.div
                 initial={{ x: "100%" }}
                 animate={{ x: 0 }}
                 exit={{ x: "100%" }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="fixed inset-y-0 right-0 w-4/5 max-w-sm bg-background z-50 flex flex-col lg:hidden"
+                className="fixed inset-0 bg-background z-50 px-4 pt-0 sm:pt-0 flex flex-col"
               >
-                {/* Mobile Menu Content */}
-                <div className="flex flex-col h-full overflow-y-auto">
-                  <div className="flex justify-between items-center p-4 border-b border-gray-200">
-                    <a href="/" onClick={closeMenu}>
-                      <Image
-                        src={Logo}
-                        width={100}
-                        height={36}
-                        priority
-                        alt="logo"
-                        className="w-24 sm:w-28"
-                      />
-                    </a>
-                  </div>
-
-                  {/* Mobile Nav Links */}
-                  <nav className="flex-1 p-4">
-                    <ul className="flex flex-col space-y-4 list-none">
-                      <li>
-                        <Link 
-                          href="/" 
-                          onClick={closeMenu} 
-                          className="block py-3 hover:text-[#D8FF85] text-lg"
-                        >
-                          Services
-                        </Link>
-                      </li>
-                      <li>
-                        <Link 
-                          href="/about" 
-                          onClick={closeMenu} 
-                          className="block py-3 hover:text-[#D8FF85] text-lg"
-                        >
-                          Our work
-                        </Link>
-                      </li>
-                      <li>
-                        <Link 
-                          href="/products" 
-                          onClick={closeMenu} 
-                          className="block py-3 hover:text-[#D8FF85] text-lg"
-                        >
-                          Why us
-                        </Link>
-                      </li>
-                      <li>
-                        <Link 
-                          href="/gallery" 
-                          onClick={closeMenu} 
-                          className="block py-3 hover:text-[#D8FF85] text-lg"
-                        >
-                          Resources
-                        </Link>
-                      </li>
-                      <li>
-                        <Link 
-                          href="/contact" 
-                          onClick={closeMenu} 
-                          className="block py-3 hover:text-[#D8FF85] text-lg"
-                        >
-                          Pricing
-                        </Link>
-                      </li>
-                      <li>
-                        <Link 
-                          href="/contact" 
-                          onClick={closeMenu} 
-                          className="block py-3 hover:text-[#D8FF85] text-lg"
-                        >
-                          Enterprise
-                        </Link>
-                      </li>
-                    </ul>
-                  </nav>
-
-                  {/* Mobile Menu Buttons */}
-                  <div className="p-4 border-t border-gray-200 space-y-3">
-                    <button 
-                      className="w-full px-4 py-3 bg-buttonbg text-button-text rounded-full cursor-pointer font-medium hover:opacity-90 transition"
-                      onClick={closeMenu}
-                    >
-                      Book a demo
-                    </button>
-                    <button 
-                      className="w-full px-4 py-3 bg-buttonbg text-button-text rounded-full cursor-pointer font-medium hover:opacity-90 transition"
-                      onClick={closeMenu}
-                    >
-                      Sign in
-                    </button>
-                  </div>
+                {/* Top Bar inside mobile menu */}
+                <div className="flex justify-between items-center h-16 sm:h-20">
+                  <a href="/">
+                    <Image
+                      src={Logo}
+                      width={100}
+                      height={36}
+                      priority
+                      alt="logo"
+                      className="w-24 sm:w-32 h-auto"
+                    />
+                  </a>
+                  <button onClick={closeMenu} className="p-2">
+                    <IoCloseSharp size={28} color={"#D8FF85"} />
+                  </button>
                 </div>
+
+                <hr className="mb-6 text-button-text" />
+
+                {/* Mobile Nav Links */}
+                <ul className="flex flex-col text-lg space-y-6 px-2 list-none">
+                  <li><Link href="/" onClick={closeMenu} className="hover:text-[#D8FF85]">Services</Link></li>
+                  <li><Link href="/about" onClick={closeMenu} className="hover:text-[#D8FF85]">Our work</Link></li>
+                  <li><Link href="/products" onClick={closeMenu} className="hover:text-[#D8FF85]">Why us</Link></li>
+                  <li><Link href="/gallery" onClick={closeMenu} className="hover:text-[#D8FF85]">Resources</Link></li>
+                  <li><Link href="/contact" onClick={closeMenu} className="hover:text-[#D8FF85]">Pricing Enterprise</Link></li>
+                </ul>
               </motion.div>
-            </>
-          )}
-        </AnimatePresence>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
 
       {/* Copy Alert */}
