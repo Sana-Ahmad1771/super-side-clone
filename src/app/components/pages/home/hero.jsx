@@ -115,7 +115,7 @@ const images3 = [
 // ================= Hero Section =================
 const Hero = () => {
   return (
-      <section className="pl-[190px] overflow-hidden bg-background">
+      <section className="lg:pl-[190px] overflow-hidden bg-background">
         <div className=" sm:px-6 py-10 lg:py-0 ">
           <div className="lg:flex justify-between items-center">
             {/* Left Content */}

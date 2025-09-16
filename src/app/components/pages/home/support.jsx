@@ -32,9 +32,9 @@ const Support = () => {
         </div>
 
         {/* Right Video Content */}
-        <div className="w-full md:w-1/2 lg:w-[45%] mt-6 md:mt-0 flex items-start">
+        <div className="max-w-full md:w-1/2 lg:w-[45%] mt-6 md:mt-0 flex items-start">
           <video
-            className="max-w-[700px] h-[400px] max-h-[100vh] object-cover rounded-2xl shadow-lg"
+            className="lg:max-w-[700px] lg:h-[400px] max-h-[100vh] object-cover rounded-2xl shadow-lg"
             controls
             autoPlay
             loop

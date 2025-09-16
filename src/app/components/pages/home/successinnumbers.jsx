@@ -31,7 +31,7 @@ const SuccessInNumbers = () => {
         </div>
 
         {/* 3 */}
-        <div className="flex justify-between items-start border-b border-gray-700 pt-6">
+        <div className="flex justify-between sm:flex-col-reverse items-start border-b border-gray-700 pt-6">
           <p className="text-lg max-w-xs">
             Brands see a three-year ROI of 94% on their Superside subscription.
           </p>
