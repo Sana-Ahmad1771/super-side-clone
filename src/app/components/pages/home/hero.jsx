@@ -115,12 +115,12 @@ const images3 = [
 // ================= Hero Section =================
 const Hero = () => {
   return (
-      <section className="lg:pl-[190px] overflow-hidden bg-background">
+      <section className="2xl:pl-[190px] overflow-hidden bg-background">
         <div className=" sm:px-6 py-10 lg:py-0 ">
           <div className="lg:flex justify-between items-center">
             {/* Left Content */}
             <div className="space-y-6 text-center lg:text-left w-full mx-auto lg:mx-0 px-5">
-              <h1 className=" lg:text-[64px] xl:w-[800px] md:text-[55px] text-[32px] break-words font-sans font-normal leading-tight text-heading">
+              <h1 className=" lg:text-[64px] xl:max-w-[800px] md:text-[55px] text-[32px] break-words font-sans font-normal leading-tight text-heading">
                 Your <span className="italic lg:text-[68px]">creative team’s</span> creative
                 team™
               </h1>

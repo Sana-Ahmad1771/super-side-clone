@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const HoverCard = ({
@@ -9,50 +9,70 @@ const HoverCard = ({
   bgColor,
   headingColor,
   paragraphColor,
-}) => (
-  <motion.div
-    className={`rounded-2xl overflow-hidden shadow-md cursor-pointer transition-all duration-300 ${bgColor}`}
-    whileHover="hover"
-    initial="rest"
-    animate="rest"
-  >
-    <motion.div className="overflow-hidden">
-      <motion.img
-        src={image}
-        alt={heading}
-        className="w-full h-[500px] object-cover"
-        draggable="false"
-        variants={{ rest: { y: 0 }, hover: { y: -60 } }}
-      />
+}) => {
+  const [isMobile, setIsMobile] = useState(false);
 
-      {/* Heading & Paragraph */}
-      <motion.div
-        className="px-4  flex flex-col justify-center  pt-6 h- "
-        variants={{ rest: { y: 0 }, hover: { y: -60 } }}
-      >
-        <h5 className={`text-2xl font-bold ${headingColor}`}>{heading}</h5>
-        <motion.p
-          className={`overflow-hidden h-20 ${paragraphColor}`}
-          variants={{
-            rest: { opacity: 0 },
-            hover: { opacity: 1 },
-          }}
+  useEffect(() => {
+    // Check if window is defined (client-side)
+    if (typeof window !== 'undefined') {
+      const checkIsMobile = () => {
+        setIsMobile(window.innerWidth < 768);
+      };
+      
+      // Initial check
+      checkIsMobile();
+      
+      // Add event listener for resize
+      window.addEventListener('resize', checkIsMobile);
+      
+      // Cleanup
+      return () => window.removeEventListener('resize', checkIsMobile);
+    }
+  }, []);
+
+  return (
+    <motion.div
+      className={`rounded-2xl overflow-hidden shadow-md cursor-pointer transition-all duration-300 ${bgColor}`}
+      whileHover={!isMobile ? "hover" : ""}
+      initial="rest"
+      animate="rest"
+    >
+      <motion.div className="overflow-hidden">
+        <motion.img
+          src={image}
+          alt={heading}
+          className="w-full lg:h-[500px]  object-cover"
+          draggable="false"
+          variants={{ rest: { y: 0 }, hover: { y: -60 } }}
+        />
+
+        {/* Heading & Paragraph */}
+        <motion.div
+          className="px-4 flex flex-col justify-center pt-6 "
+          variants={{ rest: { y: 0 }, hover: { y: -60 } }}
         >
-          {text}
-        </motion.p>
+          <h5 className={`text-2xl font-bold ${headingColor}`}>{heading}</h5>
+          <motion.p
+            className={`sm:pb-9 overflow-hidden ${isMobile ? "h-auto opacity-100" : "h-20"} ${paragraphColor}`}
+            variants={{
+              rest: { opacity: isMobile ? 1 : 0 },
+              hover: { opacity: 1 },
+            }}
+          >
+            {text}
+          </motion.p>
+        </motion.div>
       </motion.div>
     </motion.div>
-  </motion.div>
-);
+  );
+};
 
 const CardSection = () => (
-  <section className="py-40 px-6 ">
-    <div className="text-center space-y-4 container mx-auto pb-20">
+  <section className="lg:py-40 py-20 px-6  ">
+    <div className="text-center space-y-4 container mx-auto lg:pb-20">
       <p className="uppercase">made to flex</p>
-      <h2 className="text-[24px] md:text-[26px] lg:text-[29px] xl:text-[30px]">
-        Supertalented. Superfast. Super responsive. Work with a
-        <br />
-        global team that’s purposefully made to keep up with you.
+      <h2 className="text-[22px] md:text-[26px] lg:text-[29px] xl:text-[30px] lg:max-w-[800px] mx-auto">
+        Supertalented. Superfast. Super responsive. Work with a global team that's purposefully <span className="italic text-[22px] md:text-[30px] lg:text-[33px] xl:text-[34px]">made to keep up with you.</span>
       </h2>
     </div>
     <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 py-10 h-auto">
