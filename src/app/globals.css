@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+/* === Superside Theme === */
+:root {
+  --font-sans: var(--font-inter-tight);
+  --font-serif: var(--font-instrument-serif);
+
+  --color-background: #001E1A;
+  --color-heading: #8DFDBA;
+  --color-body: #F7F9F2;
+  --color-body-alt: #0A211F;
+  --color-button-text: #0B0B0B;
+  --color-buttonbg: #D8FF85;
+  --color-card1-bg: #1f5753;
+}
+
+@theme inline {
+  --font-sans: var(--font-inter-tight);
+  --font-serif: var(--font-instrument-serif);
+
+  --color-background: var(--color-background);
+  --color-heading: var(--color-heading);
+  --color-body: var(--color-body);
+  --color-body-alt: var(--color-body-alt);
+  --color-button-text: var(--color-button-text);
+  --color-buttonbg: var(--color-buttonbg);
+  --color-card1-bg: var(--color-card1-bg);
+}
+
+/* === Global Body === */
+body {
+  background: var(--color-background);
+  color: var(--color-body);
+  font-family: var(--font-sans);
+}
+
+/* === Animations === */
+
+/* Accordion */
+@keyframes accordion-down {
+  from { height: 0 }
+  to { height: var(--radix-accordion-content-height) }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height) }
+  to { height: 0 }
+}
+.animate-accordion-down {
+  animation: accordion-down 0.2s ease-out;
+}
+.animate-accordion-up {
+  animation: accordion-up 0.2s ease-out;
+}
+
+/* Slide animations */
+@keyframes slide-in {
+  0% { transform: translateX(100px); opacity: 0 }
+  100% { transform: translateX(0); opacity: 1 }
+}
+@keyframes slide-focus {
+  0% { transform: scale(0.9); filter: blur(8px) }
+  100% { transform: scale(1); filter: blur(0px) }
+}
+@keyframes slide-blur {
+  0% { transform: scale(1); filter: blur(0px) }
+  100% { transform: scale(0.9); filter: blur(8px) }
+}
+.animate-slide-in {
+  animation: slide-in 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.animate-slide-focus {
+  animation: slide-focus 0.4s ease-out;
+}
+.animate-slide-blur {
+  animation: slide-blur 0.4s ease-out;
+}
+
+/* Pulse glow */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px hsl(var(--primary) / 0.3) }
+  50% { box-shadow: 0 0 40px hsl(var(--primary) / 0.6) }
+}
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Floating effect */
+@keyframes float {
+  0%, 100% { transform: translateY(0) }
+  50% { transform: translateY(-10px) }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* === Brand Scrolling Animations === */
+.scroll-right-to-left {
+  animation: scrollRightToLeft 30s linear infinite;
+}
+
+.scroll-left-to-right {
+  animation: scrollLeftToRight 30s linear infinite;
+}
+
+@keyframes scrollRightToLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollLeftToRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+
+/* Hero section scroll */
+@keyframes hero-scroll-down {
+  0% { transform: translateY(-50%) }
+  100% { transform: translateY(0%) }
+}
+@keyframes hero-scroll-up {
+  0% { transform: translateY(0%) }
+  100% { transform: translateY(-50%) }
+}
+.animate-hero-scroll-down {
+  animation: hero-scroll-down 20s linear infinite;
+}
+.animate-hero-scroll-up {
+  animation: hero-scroll-up 20s linear infinite;
+}
