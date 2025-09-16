@@ -6,6 +6,7 @@ import Support from "./components/pages/home/support";
 import CardSection from "./components/pages/home/supertalented";
 import Successinnumbers from "./components/pages/home/successinnumbers";
 import SuccessStory from "./components/pages/home/successstory";
+import HighTec from "./components/pages/home/hightec";
 export default function Home() {
   return (
     <>
@@ -16,6 +17,7 @@ export default function Home() {
     <CardSection />
     <Successinnumbers />
     <SuccessStory />
+    <HighTec/>
     </>
   );
 }

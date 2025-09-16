@@ -60,7 +60,7 @@ const Support = () => {
 
             {/* Green Play Button Overlay */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <button className="w-16 h-14 md:w-20 md:h-16 lg:w-24 lg:h-18 flex items-center justify-center rounded-lg bg-background text-white shadow-lg hover:bg-buttonbg transition duration-300">
+              <button className="w-16 h-14 md:w-20 md:h-16 lg:w-24 lg:h-18 flex items-center justify-center rounded-lg bg-background text-white shadow-lg hover:bg-green-900 transition duration-300">
                 <svg
                   className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"
                   fill="currentColor"
