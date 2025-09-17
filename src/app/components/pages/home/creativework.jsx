@@ -126,7 +126,7 @@ const CreativeWork = () => {
         <div className="container mx-auto text-body-alt px-3">
           <div className="space-y-4">
             <p className="uppercase">easy & hassle-free</p>
-            <h2 className="text-[24px] md:text-[32px] lg:text-[40px] xl:text-[60px] w-fit leading-16">
+            <h2 className="text-[24px] md:text-[32px] lg:text-[40px] xl:text-[60px] w-fit lg:leading-16">
               Every type of creative work you'll <br /> ever need, {" "}
               <span className="italic text-[28px] md:text-[36px] lg:text-[44px] xl:text-[64px]">
                 and more

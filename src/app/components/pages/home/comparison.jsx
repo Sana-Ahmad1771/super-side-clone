@@ -62,8 +62,8 @@ export default function ComparisonSection() {
         <div className="text-center mb-12 text-body">
           <p className="uppercase text-sm">easy & hassle-free</p>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal">
-            Every type of creative work you'll <br className="hidden md:block" /> ever need,{" "}
-            <span className="italic text-[28px] sm:text-[34px] md:text-[40px] font-normal block md:inline">
+            Every type of creative work you'll <br /> ever need,{" "}
+            <span className="italic text-[28px] sm:text-[34px] md:text-[40px] font-normal">
               and more
             </span>
           </h2>
