@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import Image from "next/image";
 import { useRef, useEffect, useState } from "react";
 
@@ -10,11 +10,11 @@ function HorizontalSlider({ images, direction = "left", speed = 30 }) {
 
   useEffect(() => {
     if (containerRef.current) {
-      setDistance(containerRef.current.scrollWidth / 2); // half width of duplicated row
+      setDistance(containerRef.current.scrollWidth / 2);
     }
   }, [images]);
 
-  const imageList = [...images, ...images]; // duplicate for seamless loop
+  const imageList = [...images, ...images];
 
   return (
     <div className="relative overflow-hidden w-full">
@@ -39,7 +39,7 @@ function HorizontalSlider({ images, direction = "left", speed = 30 }) {
                 src={img.src}
                 alt={img.alt}
                 fill
-                className="object-cover rounded-lg shadow-lg"
+                className="object-cover rounded-lg shadow-lg transition-transform duration-700 hover:scale-105"
               />
             </div>
           </div>
@@ -50,27 +50,86 @@ function HorizontalSlider({ images, direction = "left", speed = 30 }) {
 }
 
 // ================= Vertical Parallax Column =================
-function ParallaxColumn({ images, direction = "up", speed = 20 }) {
-  const imageList = [...images, ...images]; // duplicate for loop
+function ParallaxColumn({ images, direction = "up", speed = 20, scrollDirection, columnIndex }) {
+  const controls = useAnimation();
+  const imageList = [...images, ...images];
+  const prevScrollDirection = useRef('down');
 
-  return (
-    <div className="flex flex-col overflow-hidden relative w-28 sm:w-40 md:w-52 lg:w-56 xl:w-60">
-      <motion.div
-        className="flex flex-col"
-        animate={{ y: direction === "up" ? ["0%", "-50%"] : ["-50%", "0%"] }}
-        transition={{
-          y: {
+  useEffect(() => {
+    const animateColumn = async () => {
+      if (prevScrollDirection.current !== scrollDirection) {
+        // Smoothly reverse direction with a gentle ease
+        if (scrollDirection === 'down') {
+          await controls.start({
+            y: direction === "up" ? ["0%", "-50%"] : ["-50%", "0%"],
+            transition: {
+              duration: speed,
+              ease: [0.25, 0.46, 0.45, 0.94], // Nice smooth easing
+            }
+          });
+        } else {
+          await controls.start({
+            y: direction === "up" ? ["-50%", "0%"] : ["0%", "-50%"],
+            transition: {
+              duration: speed,
+              ease: [0.25, 0.46, 0.45, 0.94],
+            }
+          });
+        }
+        
+        // Then start the infinite animation
+        controls.start({
+          y: scrollDirection === 'down' 
+            ? (direction === "up" ? ["0%", "-50%"] : ["-50%", "0%"])
+            : (direction === "up" ? ["-50%", "0%"] : ["0%", "-50%"]),
+          transition: {
             repeat: Infinity,
             repeatType: "loop",
             duration: speed,
             ease: "linear",
-          },
-        }}
+          }
+        });
+      } else {
+        // Continue with current animation
+        controls.start({
+          y: scrollDirection === 'down' 
+            ? (direction === "up" ? ["0%", "-50%"] : ["-50%", "0%"])
+            : (direction === "up" ? ["-50%", "0%"] : ["0%", "-50%"]),
+          transition: {
+            repeat: Infinity,
+            repeatType: "loop",
+            duration: speed,
+            ease: "linear",
+          }
+        });
+      }
+      
+      prevScrollDirection.current = scrollDirection;
+    };
+
+    animateColumn();
+  }, [scrollDirection, direction, speed, controls]);
+
+  // Add slight delay to each column for a wave effect
+  const columnDelay = columnIndex * 0.5;
+
+  return (
+    <motion.div 
+      className="flex flex-col overflow-hidden relative w-28 sm:w-40 md:w-52 lg:w-56 xl:w-60"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: columnDelay, ease: "easeOut" }}
+    >
+      <motion.div
+        className="flex flex-col"
+        animate={controls}
       >
         {imageList.map((img, idx) => (
-          <div
+          <motion.div
             key={idx}
             className="mb-3 flex-shrink-0 relative h-28 sm:h-40 md:h-52 lg:h-60 xl:h-72 w-full"
+            whileHover={{ scale: 1.03 }}
+            transition={{ duration: 0.3 }}
           >
             <Image
               src={img.src}
@@ -78,10 +137,10 @@ function ParallaxColumn({ images, direction = "up", speed = 20 }) {
               fill
               className="object-cover rounded-lg shadow-lg"
             />
-          </div>
+          </motion.div>
         ))}
       </motion.div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -114,46 +173,139 @@ const images3 = [
 
 // ================= Hero Section =================
 const Hero = () => {
+  const [scrollDirection, setScrollDirection] = useState('down');
+  const [isInView, setIsInView] = useState(true);
+  const [hasScrolled, setHasScrolled] = useState(false);
+  const sectionRef = useRef(null);
+  const lastScrollY = useRef(0);
+  const scrollTimeout = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Clear any existing timeout
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
+      }
+      
+      // Check if section is in view
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        setIsInView(isVisible);
+        
+        if (isVisible) {
+          // Determine scroll direction with a slight delay for smoother transitions
+          scrollTimeout.current = setTimeout(() => {
+            if (currentScrollY > lastScrollY.current + 5) {
+              setScrollDirection('down');
+            } else if (currentScrollY < lastScrollY.current - 5) {
+              setScrollDirection('up');
+              setHasScrolled(true);
+            }
+          }, 50);
+        }
+      }
+      
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
+      }
+    };
+  }, []);
+
+  // Determine animation direction based on scroll behavior
+  const getColumnDirection = (columnIndex) => {
+    // If user hasn't scrolled yet, use default directions
+    if (!hasScrolled) {
+      return columnIndex === 1 ? 'down' : 'up';
+    }
+    
+    // After scrolling, reverse directions when scrolling up into the section
+    if (scrollDirection === 'up' && isInView) {
+      return columnIndex === 1 ? 'up' : 'down';
+    }
+    
+    // Default behavior when scrolling down into section
+    return columnIndex === 1 ? 'down' : 'up';
+  };
+
   return (
-      <section className="2xl:pl-[190px] overflow-hidden bg-background">
-        <div className=" sm:px-6 py-10 lg:py-0 ">
+      <section ref={sectionRef} className="2xl:pl-[190px] overflow-hidden bg-background">
+        <div className="sm:px-6 py-10 lg:py-0">
           <div className="lg:flex justify-between items-center">
             {/* Left Content */}
-            <div className="space-y-6 text-center lg:text-left w-full mx-auto lg:mx-0 px-5">
-              <h1 className=" lg:text-[64px] xl:max-w-[800px] md:text-[55px] text-[32px] break-words font-sans font-normal leading-tight text-heading">
-                Your <span className="italic lg:text-[68px]">creative team’s</span> creative
+            <motion.div 
+              className="space-y-6 text-center lg:text-left w-full mx-auto lg:mx-0 px-5"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <h1 className="lg:text-[64px] xl:max-w-[800px] md:text-[55px] text-[32px] break-words font-sans font-normal leading-tight text-heading">
+                Your <span className="italic lg:text-[68px]">creative team's</span> creative
                 team™
               </h1>
-              <p className="md:text-base lg:text-lg xl:text-xl text-body font-sans xl:w-[590px] max-w-prose mx-auto lg:mx-0">
+              <motion.p 
+                className="md:text-base lg:text-lg xl:text-xl text-body font-sans xl:w-[590px] max-w-prose mx-auto lg:mx-0"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+              >
                 Scale your in-house creative team with top global talent powered
                 by industry-leading AI workflows, delivering anything you can
                 imagine fast and affordably.
-              </p>
-              <button className="px-6 py-3 w-fit bg-buttonbg text-button-text cursor-pointer rounded-full font-sans font-medium hover:opacity-90 transition">
+              </motion.p>
+              <motion.button 
+                className="px-6 py-3 w-fit bg-buttonbg text-button-text cursor-pointer rounded-full font-sans font-medium hover:opacity-90 transition-all duration-300 hover:shadow-lg"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 Book a demo
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
 
             {/* Right Side Animations */}
             <div className="lg:w-[50%]">
               {/* Desktop: Vertical Parallax */}
-              <div className="hidden lg:flex justify-end gap-4 h-[100vh] md:h-[70vh] lg:h-[80vh] xl:h-[90vh] relative overflow-hidden">
-                {/* Top fade */}
-                <div className="pointer-events-none absolute left-0 top-0 w-full h-12 md:h-16 lg:h-20 xl:h-24 z-20 bg-gradient-to-b from-background via-background/70 to-transparent" />
-                {/* Bottom fade */}
-                <div className="pointer-events-none absolute left-0 bottom-0 w-full h-12 md:h-16 lg:h-20 xl:h-24 z-20 bg-gradient-to-t from-background via-background/70 to-transparent" />
+              <div className="hidden lg:flex justify-end gap-6 h-[100vh] md:h-[70vh] lg:h-[80vh] xl:h-[90vh] relative overflow-hidden">
+                {/* Gradient overlays for a more polished look */}
+                <div className="pointer-events-none absolute left-0 top-0 w-full h-20 md:h-24 lg:h-28 xl:h-32 z-20 bg-gradient-to-b from-background to-transparent" />
+                <div className="pointer-events-none absolute left-0 bottom-0 w-full h-20 md:h-24 lg:h-28 xl:h-32 z-20 bg-gradient-to-t from-background to-transparent" />
 
-                <ParallaxColumn images={images1} direction="up" speed={25} />
-                <ParallaxColumn images={images2} direction="down" speed={30} />
-                <ParallaxColumn images={images3} direction="up" speed={20} />
+                <ParallaxColumn 
+                  images={images1} 
+                  direction={getColumnDirection(0)} 
+                  speed={25} 
+                  scrollDirection={scrollDirection}
+                  columnIndex={0}
+                />
+                <ParallaxColumn 
+                  images={images2} 
+                  direction={getColumnDirection(1)} 
+                  speed={30} 
+                  scrollDirection={scrollDirection}
+                  columnIndex={1}
+                />
+                <ParallaxColumn 
+                  images={images3} 
+                  direction={getColumnDirection(2)} 
+                  speed={20} 
+                  scrollDirection={scrollDirection}
+                  columnIndex={2}
+                />
               </div>
 
               {/* Mobile/Tablet: Horizontal Sliders */}
-              <div className="relative flex flex-col lg:hidden gap-4 w-full mt-8 overflow-hidden">
-                {/* Left fade */}
-                <div className="pointer-events-none absolute top-0 left-0 h-full w-8 sm:w-12 md:w-16 z-20 bg-gradient-to-r from-background via-background/70 to-transparent" />
-                {/* Right fade */}
-                <div className="pointer-events-none absolute top-0 right-0 h-full w-8 sm:w-12 md:w-16 z-20 bg-gradient-to-l from-background via-background/70 to-transparent" />
+              <div className="relative flex flex-col lg:hidden gap-6 w-full mt-8 overflow-hidden">
+                {/* Gradient overlays */}
+                <div className="pointer-events-none absolute top-0 left-0 h-full w-12 sm:w-16 md:w-20 z-20 bg-gradient-to-r from-background to-transparent" />
+                <div className="pointer-events-none absolute top-0 right-0 h-full w-12 sm:w-16 md:w-20 z-20 bg-gradient-to-l from-background to-transparent" />
 
                 <HorizontalSlider images={images1} direction="left" speed={25} />
                 <HorizontalSlider images={images3} direction="right" speed={30} />

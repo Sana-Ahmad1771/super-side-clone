@@ -71,8 +71,8 @@ const CardSection = () => (
   <section className="lg:py-40 py-20 px-6  ">
     <div className="text-center space-y-4 container mx-auto lg:pb-20">
       <p className="uppercase">made to flex</p>
-      <h2 className="text-[22px] md:text-[26px] lg:text-[29px] xl:text-[30px] lg:max-w-[800px] mx-auto">
-        Supertalented. Superfast. Super responsive. Work with a global team that's purposefully <span className="italic text-[22px] md:text-[30px] lg:text-[33px] xl:text-[34px]">made to keep up with you.</span>
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal mx-auto">
+        Supertalented. Superfast. Super responsive. Work with a <br /> global team that's purposefully <span className="italic text-[22px] md:text-[30px] lg:text-[33px] xl:text-[34px]">made to keep up with you.</span>
       </h2>
     </div>
     <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 py-10 h-auto">
@@ -86,7 +86,7 @@ const CardSection = () => (
       />
 
       <HoverCard
-        image="/assets/laptop-3.png"
+        image="/assets/laptop-card.png"
         heading="Ultra-fast turnaround times"
         text="With dedicated project managers, collaborative online tools and the expert use of AI, projects can be completed in as little as 12 hours."
         bgColor="bg-body"
@@ -94,7 +94,7 @@ const CardSection = () => (
         paragraphColor="text-button-text"
       />
       <HoverCard
-        image="https://images.unsplash.com/photo-1517292987719-0369a794ec0f"
+        image="/assets/mobile-card.png"
         heading="Flexible subscription model"
         text="Access a broad range of services, pivot as needed and work more efficiently with AI-enhanced creative, so that you never waste a dollar."
         bgColor="bg-buttonbg"

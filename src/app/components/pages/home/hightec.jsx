@@ -49,14 +49,14 @@ const HighTec = () => {
   return (
     <>
       <section ref={containerRef} className="bg-body lg:py-30 pt-20 md:py-16">
-        <div className="flex flex-col justify-center gap-5 items-center text-body-alt container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col justify-center gap-5 items-center text-body-alt container mx-auto px-4 sm:px-6 lg:px-8 lg:space-y-20 space-y-12">
           {/* Heading */}
           <div className="text-center space-y-4 container mx-auto">
             <p className="uppercase">OUR WORK</p>
-            <h2 className="text-[22px] md:text-[26px] lg:text-[29px] xl:text-[30px] lg:max-w-[700px] mx-auto">
-              From high tech to high fashion and beyond{" "}
-              <span className="italic text-[22px] md:text-[30px] lg:text-[33px] xl:text-[34px]">
-                fashion and beyond
+            <h2 className="text-[24px] md:text-[32px] lg:text-[40px] xl:text-[60px] leading-16">
+              From high tech to high <br /> fashion{" "}
+              <span className="italic text-[28px] md:text-[36px] lg:text-[44px] xl:text-[64px]">
+                 and beyond
               </span>
             </h2>
           </div>

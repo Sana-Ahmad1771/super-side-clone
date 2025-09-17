@@ -7,6 +7,8 @@ import CardSection from "./components/pages/home/supertalented";
 import Successinnumbers from "./components/pages/home/successinnumbers";
 import SuccessStory from "./components/pages/home/successstory";
 import HighTec from "./components/pages/home/hightec";
+import CreativeWork from "./components/pages/home/creativework";
+import CamparisonSection from "./components/pages/home/comparison";
 export default function Home() {
   return (
     <>
@@ -18,6 +20,8 @@ export default function Home() {
     <Successinnumbers />
     <SuccessStory />
     <HighTec/>
+    <CreativeWork/>
+    <CamparisonSection/>
     </>
   );
 }
