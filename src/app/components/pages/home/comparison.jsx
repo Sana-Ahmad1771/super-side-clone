@@ -1,7 +1,6 @@
 "use client";
 
-import { Check, X, UsersRound, UserPlus, BriefcaseBusiness,Brush  } from "lucide-react";
-
+import { Check, X, UsersRound, UserPlus, BriefcaseBusiness, Brush } from "lucide-react";
 
 export default function ComparisonSection() {
   const rows = [
@@ -57,7 +56,7 @@ export default function ComparisonSection() {
 
   return (
     <section className="bg-background text-body py-16 px-4">
-      <div className="container mx-auto">
+      <div className="lg:container mx-auto md:px-5">
         {/* Header */}
         <div className="text-center mb-12 text-body">
           <p className="uppercase text-sm">easy & hassle-free</p>
@@ -66,7 +65,7 @@ export default function ComparisonSection() {
             <span className="italic text-[28px] sm:text-[34px] md:text-[40px] font-normal">
               and more
             </span>
-          </h2>
+          </h2>                                 
         </div>
 
         {/* Table/slider (works on all screens) */}
@@ -76,14 +75,14 @@ export default function ComparisonSection() {
               min-w-[600px] 
               grid 
               grid-cols-[minmax(180px,1.5fr)_repeat(5,minmax(80px,1fr))]
-              md:grid-cols-[minmax(220px,2fr)_repeat(5,minmax(100px,1fr))]
-              lg:grid-cols-[minmax(250px,2.5fr)_repeat(5,minmax(120px,1fr))]
+              md:grid-cols-[minmax(220px,1.9fr)_repeat(5,minmax(100px,1fr))]
+              lg:grid-cols-[minmax(250px,2fr)_repeat(5,minmax(120px,1fr))]
             "
           >
             {/* Header row */}
-            <div className="p-4 bg-background sticky left-0 z-20 rounded-tl-lg"></div>
+            <div className="p-4 bg-background left-0 z-20 rounded-tl-lg"></div>
             {columns.map((col, i) => (
-              <div key={i} className="p-4 text-center font-semibold bg-background">
+              <div key={i} className="py-4 lg:text-2xl sm:text-lg text-center font-normal bg-background">
                 {col}
               </div>
             ))}
@@ -92,33 +91,35 @@ export default function ComparisonSection() {
             {rows.map((row, idx) => (
               <div
                 key={idx}
-                className={`col-span-6 grid 
+                className={`
+                  ${idx !== rows.length - 1 ? "border-b border-buttonbg/30" : ""}
+                  col-span-6 grid 
                   grid-cols-[minmax(180px,1.5fr)_repeat(5,minmax(80px,1fr))]
-                  md:grid-cols-[minmax(220px,2fr)_repeat(5,minmax(100px,1fr))]
-                  lg:grid-cols-[minmax(250px,2.5fr)_repeat(5,minmax(120px,1fr))]
+                  md:grid-cols-[minmax(220px,1.9fr)_repeat(5,minmax(100px,1fr))]
+                  lg:grid-cols-[minmax(250px,2fr)_repeat(5,minmax(120px,1fr))]
                   ${idx === 0 ? row.bg : ""} ${idx === 0 ? "rounded-full" : ""}`}
               >
                 {/* Left sticky column */}
                 <div
-                  className={`flex items-center gap-3 py-4 px-3 sticky left-0 z-10 ${
+                  className={`flex items-center lg:gap-8 gap-4 lg:py-10 py-5 lg:px-5 sticky left-0 z-10 ${
                     idx === 0 ? row.bg : "bg-background"
                   } ${idx === 0 ? "rounded-l-full" : ""}`}
                 >
                   <div
-                    className={`hidden md:flex w-14 h-12  items-center justify-center rounded-lg ${
-                      row.hideIcon ? "bg-transparent" : "bg-gray-500"
+                    className={`hidden md:flex lg:w-22 lg:h-22 md:w-12 md:h-12 sm:h-12 sm:w-12 items-center justify-center rounded-lg ${
+                      row.hideIcon ? "bg-transparent" : "bg-gray-500/30"
                     } shrink-0`}
                   >
-                    {!row.hideIcon && <row.icon className="w-8 h-8" />}
+                    {!row.hideIcon && <row.icon className="lg:w-9 lg:h-9" />}
                   </div>
                   <div className="min-w-0">
-                    <h4 className={`font-semibold text-sm md:text-base ${row.textColor}`}>
+                    <h4 className={`font-semibold lg:text-2xl sm:text-lg ${row.textColor}`}>
                       {row.title}
                     </h4>
                     <p
                       className={`hidden md:block ${
                         row.textColor === "text-black" ? "text-black/70" : "text-gray-400"
-                      } text-xs md:text-sm mt-1`}
+                      } lg:text-[16px] sm:text-sm mt-1 lg:max-w-[230px]`}
                     >
                       {row.desc}
                     </p>
@@ -134,9 +135,9 @@ export default function ComparisonSection() {
                     } ${i === row.checks.length - 1 && idx === 0 ? "rounded-r-full" : ""}`}
                   >
                     {val ? (
-                      <Check className={`w-4 h-4 md:w-5 md:h-5 ${row.checkColor}`} />
+                      <Check className={`lg:w-8 lg:h-8 md:w-7 md:h-7 sm:w-6 sm:h-6 ${row.checkColor}`} />
                     ) : (
-                      <X className={`w-4 h-4 md:w-5 md:h-5 ${row.checkColor}`} />
+                      <X className={`lg:w-8 lg:h-8 md:w-7 md:h-7 sm:w-6 sm:h-6 ${row.checkColor}`} />
                     )}
                   </div>
                 ))}
