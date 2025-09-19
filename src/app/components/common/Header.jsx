@@ -13,6 +13,7 @@ import MegaMenuResources from "./megamenuResources";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false); // 👈 new state
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -36,8 +37,13 @@ const Header = () => {
 
   return (
     <div className="sticky top-0 z-50 w-full font-inter font-normal text-base shadow-md bg-background">
+      {/* Blur Overlay */}
+      {isMegaMenuOpen && (
+        <div className="fixed inset-0 backdrop-blur-sm bg-black/10 z-40"></div>
+      )}
+
       {/* Navbar */}
-      <div className="flex justify-between items-center px-4 sm:px-6 lg:container lg:mx-auto shadow-[0px_4px_4px_0px_rgba(0,0,0,0.05)] h-16 sm:h-20">
+      <div className="flex justify-between items-center px-4 sm:px-6 lg:container lg:mx-auto shadow-[0px_4px_4px_0px_rgba(0,0,0,0.05)] h-16 sm:h-20 relative z-50">
         {/* Logo */}
         <div className="flex-shrink-0">
           <a href="/">
@@ -57,7 +63,7 @@ const Header = () => {
           <ul className="flex justify-center items-center space-x-4 xl:space-x-6 2xl:space-x-8 list-none">
             <li className="relative">
               <Link href="/" className="hover:text-[#D8FF85] text-sm xl:text-base">
-                <MegaMenu />
+                <MegaMenu setIsMegaMenuOpen={setIsMegaMenuOpen} />
               </Link>
             </li>
             <li>
@@ -67,12 +73,12 @@ const Header = () => {
             </li>
             <li>
               <Link href="/products" className="hover:text-[#D8FF85] text-sm xl:text-base">
-                <MegaMenuWhyUs />
+                <MegaMenuWhyUs setIsMegaMenuOpen={setIsMegaMenuOpen} />
               </Link>
             </li>
             <li>
               <Link href="/gallery" className="hover:text-[#D8FF85] text-sm xl:text-base">
-                <MegaMenuResources />
+                <MegaMenuResources setIsMegaMenuOpen={setIsMegaMenuOpen} />
               </Link>
             </li>
             <li>
@@ -134,10 +140,11 @@ const Header = () => {
                 {/* Mobile Nav Links */}
                 <ul className="flex flex-col text-lg space-y-6 px-2 list-none">
                   <li><Link href="/" onClick={closeMenu} className="hover:text-[#D8FF85]">Services</Link></li>
-                  <li><Link href="/about" onClick={closeMenu} className="hover:text-[#D8FF85]">Our work</Link></li>
-                  <li><Link href="/products" onClick={closeMenu} className="hover:text-[#D8FF85]">Why us</Link></li>
-                  <li><Link href="/gallery" onClick={closeMenu} className="hover:text-[#D8FF85]">Resources</Link></li>
-                  <li><Link href="/contact" onClick={closeMenu} className="hover:text-[#D8FF85]">Pricing Enterprise</Link></li>
+                  <li><Link href="/our work" onClick={closeMenu} className="hover:text-[#D8FF85]">Our work</Link></li>
+                  <li><Link href="/why us" onClick={closeMenu} className="hover:text-[#D8FF85]">Why us</Link></li>
+                  <li><Link href="/resources" onClick={closeMenu} className="hover:text-[#D8FF85]">Resources</Link></li>
+                  <li><Link href="/pricing" onClick={closeMenu} className="hover:text-[#D8FF85]">Pricing</Link></li>
+                  <li><Link href="/enterprise" onClick={closeMenu} className="hover:text-[#D8FF85]"> Enterprise</Link></li>
                 </ul>
               </motion.div>
             )}

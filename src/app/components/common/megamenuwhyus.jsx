@@ -1,23 +1,28 @@
 "use client";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaPaintBrush, FaVideo, FaRobot, FaBullhorn } from "react-icons/fa";
 
-const MegaMenuWhyUs = () => {
+const MegaMenuWhyUs = ({ setIsMegaMenuOpen }) => {
   const [open, setOpen] = useState(false);
 
   return (
     <div
       className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      onMouseEnter={() => {
+        setOpen(true);
+        setIsMegaMenuOpen(true);
+      }}
+      onMouseLeave={() => {
+        setOpen(false);
+        setIsMegaMenuOpen(false);
+      }}
     >
       {/* Trigger Button */}
-      <button className="px-4 py-2 hover:text-[#D8FF85] cursor-pointer flex items-center">
+      <button className="px-4 py-2 text-body hover:text-[#D8FF85] cursor-pointer flex items-center font-medium">
         Why us <span className="ml-1">▾</span>
       </button>
 
-      {/* Dropdown Panel - Full width */}
+      {/* Dropdown Panel */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -25,126 +30,66 @@ const MegaMenuWhyUs = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.2 }}
-            className="fixed left-0 w-full bg-[#F7F9F2] shadow-lg z-40"
+            className="fixed left-0 w-full bg-body shadow-lg z-40 border-t border-gray-200"
             style={{ top: "80px" }}
           >
             <div className="container mx-auto px-4 py-8">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {/* Column 1 */}
-                <div>
-                  <h3 className="bg-[#D8FF85] px-3 py-1 rounded-md text-[#1E3D69] font-medium inline-block mb-4">
-                    Creative design services →
-                  </h3>
-                  <ul className="space-y-4">
-                    <li className="flex items-start gap-3">
-                      <FaPaintBrush className="text-gray-500 mt-1" />
-                      <div>
-                        <p className="font-medium">Ad creative</p>
-                        <p className="text-sm text-gray-600">
-                          Eye-catching designs that perform
-                        </p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <FaPaintBrush className="text-gray-500 mt-1" />
-                      <div>
-                        <p className="font-medium">Social media creative</p>
-                        <p className="text-sm text-gray-600">
-                          Engaging assets for all platforms
-                        </p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <FaPaintBrush className="text-gray-500 mt-1" />
-                      <div>
-                        <p className="font-medium">Presentation design</p>
-                        <p className="text-sm text-gray-600">
-                          Professional and engaging presentations
-                        </p>
-                      </div>
-                    </li>
-                  </ul>
+                <div className="flex flex-col text-body-alt">
+                  <div className="w-full h-52 overflow-hidden mb-4">
+                    <img 
+                      src="/assets/madewithAI-navbar.png" 
+                      alt="AI created content" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="flex gap-3 mt-2">
+                    <div>
+                      <p className="font-mediumt">AI excellence</p>
+                      <p className="text-sm text-gray-500">
+                        Your shortcut to AI's creative advantage
+                      </p>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Column 2 */}
-                <div>
-                  <h3 className="bg-[#3A7D44] text-white px-3 py-1 rounded-md font-medium inline-block mb-4">
-                    Specialized production services →
-                  </h3>
-                  <ul className="space-y-4">
-                    <li className="flex items-start gap-3">
-                      <FaVideo className="text-gray-500 mt-1" />
-                      <div>
-                        <p className="font-medium">Video production</p>
-                        <p className="text-sm text-gray-600">
-                          Effortless video production at scale
-                        </p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <FaVideo className="text-gray-500 mt-1" />
-                      <div>
-                        <p className="font-medium">Motion graphics</p>
-                        <p className="text-sm text-gray-600">
-                          Dynamic animations for your brand
-                        </p>
-                      </div>
-                    </li>
-                  </ul>
+                <div className="flex flex-col text-body-alt">
+                  <div className="w-full h-52 overflow-hidden mb-4">
+                    <img 
+                      src="/assets/studystable-navbar.png" 
+                      alt="Stable study environment" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="flex gap-3 mt-2">
+                    <div>
+                      <p className="font-normal ">Our technology</p>
+                      <p className="text-sm text-gray-500">
+                        The tec powering creative edge
+                      </p>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Column 3 */}
-                <div>
-                  <h3 className="bg-[#1E3D69] text-white px-3 py-1 rounded-md font-medium inline-block mb-4">
-                    AI services →
-                  </h3>
-                  <ul className="space-y-4">
-                    <li className="flex items-start gap-3">
-                      <FaRobot className="text-gray-500 mt-1" />
-                      <div>
-                        <p className="font-medium">AI enhanced creative</p>
-                        <p className="text-sm text-gray-600">
-                          Human brilliance powered by AI
-                        </p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <FaRobot className="text-gray-500 mt-1" />
-                      <div>
-                        <p className="font-medium">AI content generation</p>
-                        <p className="text-sm text-gray-600">
-                          Automated content creation
-                        </p>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* Column 4 */}
-                <div>
-                  <h3 className="bg-[#D6B370] px-3 py-1 rounded-md font-medium inline-block mb-4">
-                    Marketing services →
-                  </h3>
-                  <ul className="space-y-4">
-                    <li className="flex items-start gap-3">
-                      <FaBullhorn className="text-gray-500 mt-1" />
-                      <div>
-                        <p className="font-medium">Marketing strategy</p>
-                        <p className="text-sm text-gray-600">
-                          Grow your brand with expert consultants
-                        </p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <FaBullhorn className="text-gray-500 mt-1" />
-                      <div>
-                        <p className="font-medium">Campaign management</p>
-                        <p className="text-sm text-gray-600">
-                          End-to-end campaign execution
-                        </p>
-                      </div>
-                    </li>
-                  </ul>
+                <div className="flex flex-col text-body-alt">
+                  <div className="w-full h-52 overflow-hidden mb-4">
+                    <img 
+                      src="/assets/grouppeople-navbar.png" 
+                      alt="Collaborative team" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="flex gap-3 mt-2">
+                    <div>
+                      <p className="font-normal">Our Creative Talent</p>
+                      <p className="text-sm text-gray-600">
+                        Meet your dedicated team
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

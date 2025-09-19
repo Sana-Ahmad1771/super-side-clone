@@ -3,17 +3,23 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaPaintBrush, FaVideo, FaRobot, FaBullhorn } from "react-icons/fa";
 
-const MegaMenu = () => {
+const MegaMenu = ({ setIsMegaMenuOpen }) => {
   const [open, setOpen] = useState(false);
 
   return (
     <div
       className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      onMouseEnter={() => {
+        setOpen(true);
+        setIsMegaMenuOpen(true);   // 👈 enable blur in Header
+      }}
+      onMouseLeave={() => {
+        setOpen(false);
+        setIsMegaMenuOpen(false);  // 👈 disable blur in Header
+      }}
     >
       {/* Trigger Button */}
-      <button className="px-4 py-2 hover:text-[#D8FF85] cursor-pointer flex items-center">
+      <button className="px-4 py-2 text-body hover:text-[#D8FF85] cursor-pointer flex items-center">
         Services <span className="ml-1">▾</span>
       </button>
 
@@ -35,7 +41,7 @@ const MegaMenu = () => {
                   <h3 className="bg-[#D8FF85] px-3 py-1 rounded-md text-[#1E3D69] font-medium inline-block mb-4">
                     Creative design services →
                   </h3>
-                  <ul className="space-y-4">
+                  <ul className="space-y-4 text-body-alt">
                     <li className="flex items-start gap-3">
                       <FaPaintBrush className="text-gray-500 mt-1" />
                       <div>
@@ -71,7 +77,7 @@ const MegaMenu = () => {
                   <h3 className="bg-[#3A7D44] text-white px-3 py-1 rounded-md font-medium inline-block mb-4">
                     Specialized production services →
                   </h3>
-                  <ul className="space-y-4">
+                  <ul className="space-y-4 text-body-alt">
                     <li className="flex items-start gap-3">
                       <FaVideo className="text-gray-500 mt-1" />
                       <div>
@@ -98,7 +104,7 @@ const MegaMenu = () => {
                   <h3 className="bg-[#1E3D69] text-white px-3 py-1 rounded-md font-medium inline-block mb-4">
                     AI services →
                   </h3>
-                  <ul className="space-y-4">
+                  <ul className="space-y-4 text-body-alt">
                     <li className="flex items-start gap-3">
                       <FaRobot className="text-gray-500 mt-1" />
                       <div>
@@ -125,7 +131,7 @@ const MegaMenu = () => {
                   <h3 className="bg-[#D6B370] px-3 py-1 rounded-md font-medium inline-block mb-4">
                     Marketing services →
                   </h3>
-                  <ul className="space-y-4">
+                  <ul className="space-y-4 text-body-alt">
                     <li className="flex items-start gap-3">
                       <FaBullhorn className="text-gray-500 mt-1" />
                       <div>

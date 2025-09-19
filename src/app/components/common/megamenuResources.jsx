@@ -1,23 +1,29 @@
 "use client";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaPaintBrush, FaVideo, FaRobot, FaBullhorn } from "react-icons/fa";
+import { FaPaintBrush } from "react-icons/fa";
 
-const MegaMenuResources = () => {
+const MegaMenuResources = ({ setIsMegaMenuOpen }) => {
   const [open, setOpen] = useState(false);
 
   return (
     <div
       className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      onMouseEnter={() => {
+        setOpen(true);
+        setIsMegaMenuOpen(true); // 🔥 blur background
+      }}
+      onMouseLeave={() => {
+        setOpen(false);
+        setIsMegaMenuOpen(false); // 🔥 remove blur
+      }}
     >
       {/* Trigger Button */}
-      <button className="px-4 py-2 hover:text-[#D8FF85] cursor-pointer flex items-center">
+      <button className="px-4 py-2 text-body hover:text-[#D8FF85] cursor-pointer flex items-center">
         Resources <span className="ml-1">▾</span>
       </button>
 
-      {/* Dropdown Panel - Full width */}
+      {/* Dropdown Panel */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -29,122 +35,126 @@ const MegaMenuResources = () => {
             style={{ top: "80px" }}
           >
             <div className="container mx-auto px-4 py-8">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                {/* Column 1 */}
-                <div>
-                  <h3 className="bg-[#D8FF85] px-3 py-1 rounded-md text-[#1E3D69] font-medium inline-block mb-4">
+              <div className="flex justify-between gap-8">
+                {/* Column 1 - Services */}
+                <div className="w-1/3 flex flex-col">
+                  <h3 className="text-body-alt py-1 font-medium inline-block mb-4">
                     Creative design services →
                   </h3>
-                  <ul className="space-y-4">
-                    <li className="flex items-start gap-3">
-                      <FaPaintBrush className="text-gray-500 mt-1" />
-                      <div>
-                        <p className="font-medium">Ad creative</p>
-                        <p className="text-sm text-gray-600">
-                          Eye-catching designs that perform
-                        </p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <FaPaintBrush className="text-gray-500 mt-1" />
-                      <div>
-                        <p className="font-medium">Social media creative</p>
-                        <p className="text-sm text-gray-600">
-                          Engaging assets for all platforms
-                        </p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <FaPaintBrush className="text-gray-500 mt-1" />
-                      <div>
-                        <p className="font-medium">Presentation design</p>
-                        <p className="text-sm text-gray-600">
-                          Professional and engaging presentations
-                        </p>
-                      </div>
-                    </li>
+                  <ul className="flex flex-col justify-between h-auto text-body-alt">
+                    {[
+                      {
+                        title: "Ad creative",
+                        desc: "Eye-catching designs that perform",
+                      },
+                      {
+                        title: "Social media creative",
+                        desc: "Engaging assets for all platforms",
+                      },
+                      {
+                        title: "Presentation design",
+                        desc: "Professional and engaging presentations",
+                      },
+                      {
+                        title: "Brand identity",
+                        desc: "Complete brand identity packages",
+                      },
+                    ].map((item, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start gap-3 p-3 rounded-lg hover:bg-white/50 transition-colors"
+                      >
+                        <FaPaintBrush className="text-gray-500 mt-1 flex-shrink-0" />
+                        <div>
+                          <p className="font-medium">{item.title}</p>
+                          <p className="text-sm text-gray-600">{item.desc}</p>
+                        </div>
+                      </li>
+                    ))}
                   </ul>
                 </div>
 
-                {/* Column 2 */}
-                <div>
-                  <h3 className="bg-[#3A7D44] text-white px-3 py-1 rounded-md font-medium inline-block mb-4">
-                    Specialized production services →
-                  </h3>
-                  <ul className="space-y-4">
-                    <li className="flex items-start gap-3">
-                      <FaVideo className="text-gray-500 mt-1" />
-                      <div>
-                        <p className="font-medium">Video production</p>
-                        <p className="text-sm text-gray-600">
-                          Effortless video production at scale
-                        </p>
+                {/* Column 2 - Blogs / Resources */}
+                <div className="w-2/3 flex gap-8">
+                  {/* Left side column */}
+                  <div className="flex-1 flex flex-col text-body-alt">
+                    <h3 className="font-medium mb-4">Blogs →</h3>
+                    <div className="flex flex-col gap-6">
+                      {/* Card 1 */}
+                      <div className="p-4 flex flex-col bg-white/40 rounded-lg hover:bg-white/60 transition">
+                        <div className="w-full h-40 overflow-hidden mb-3">
+                          <img
+                            src="/assets/studystable-navbar.png"
+                            alt="Stable study environment"
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <div>
+                          <p className="font-medium">Our technology</p>
+                          <p className="text-sm text-gray-500 mt-1">
+                            The tech powering creative edge
+                          </p>
+                        </div>
                       </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <FaVideo className="text-gray-500 mt-1" />
-                      <div>
-                        <p className="font-medium">Motion graphics</p>
-                        <p className="text-sm text-gray-600">
-                          Dynamic animations for your brand
-                        </p>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
 
-                {/* Column 3 */}
-                <div>
-                  <h3 className="bg-[#1E3D69] text-white px-3 py-1 rounded-md font-medium inline-block mb-4">
-                    AI services →
-                  </h3>
-                  <ul className="space-y-4">
-                    <li className="flex items-start gap-3">
-                      <FaRobot className="text-gray-500 mt-1" />
-                      <div>
-                        <p className="font-medium">AI enhanced creative</p>
-                        <p className="text-sm text-gray-600">
-                          Human brilliance powered by AI
-                        </p>
+                      {/* Card 2 */}
+                      <div className="p-4 flex flex-col bg-white/40 rounded-lg hover:bg-white/60 transition">
+                        <div className="w-full h-40 overflow-hidden mb-3">
+                          <img
+                            src="/assets/studystable-navbar.png"
+                            alt="Case studies"
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <div>
+                          <p className="font-medium">Case studies</p>
+                          <p className="text-sm text-gray-500 mt-1">
+                            Success stories from our clients
+                          </p>
+                        </div>
                       </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <FaRobot className="text-gray-500 mt-1" />
-                      <div>
-                        <p className="font-medium">AI content generation</p>
-                        <p className="text-sm text-gray-600">
-                          Automated content creation
-                        </p>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
+                    </div>
+                  </div>
 
-                {/* Column 4 */}
-                <div>
-                  <h3 className="bg-[#D6B370] px-3 py-1 rounded-md font-medium inline-block mb-4">
-                    Marketing services →
-                  </h3>
-                  <ul className="space-y-4">
-                    <li className="flex items-start gap-3">
-                      <FaBullhorn className="text-gray-500 mt-1" />
-                      <div>
-                        <p className="font-medium">Marketing strategy</p>
-                        <p className="text-sm text-gray-600">
-                          Grow your brand with expert consultants
-                        </p>
+                  {/* Right side column */}
+                  <div className="flex-1 flex flex-col text-body-alt">
+                    <h3 className=" font-medium mb-4">Customer stories →</h3>
+                    <div className="flex flex-col gap-6">
+                      {/* Card 3 */}
+                      <div className="p-4 flex flex-col bg-white/40 rounded-lg hover:bg-white/60 transition">
+                        <div className="w-full h-40 overflow-hidden mb-3">
+                          <img
+                            src="/assets/studystable-navbar.png"
+                            alt="Blog insights"
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <div>
+                          <p className="font-medium">Blog & insights</p>
+                          <p className="text-sm text-gray-500 mt-1">
+                            Latest trends and industry insights
+                          </p>
+                        </div>
                       </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <FaBullhorn className="text-gray-500 mt-1" />
-                      <div>
-                        <p className="font-medium">Campaign management</p>
-                        <p className="text-sm text-gray-600">
-                          End-to-end campaign execution
-                        </p>
+
+                      {/* Card 4 */}
+                      <div className="p-4 flex flex-col bg-white/40 rounded-lg hover:bg-white/60 transition">
+                        <div className="w-full h-40 overflow-hidden mb-3">
+                          <img
+                            src="/assets/studystable-navbar.png"
+                            alt="Resources library"
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <div>
+                          <p className="font-medium">Resources library</p>
+                          <p className="text-sm text-gray-500 mt-1">
+                            Templates, guides and tools
+                          </p>
+                        </div>
                       </div>
-                    </li>
-                  </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
