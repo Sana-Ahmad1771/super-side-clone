@@ -90,6 +90,7 @@ const TrustedBrands = () => {
       name: "Adobe",
       logo: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Adobe_Systems_logo_and_wordmark.svg",
     },
+
   ];
 
   return (

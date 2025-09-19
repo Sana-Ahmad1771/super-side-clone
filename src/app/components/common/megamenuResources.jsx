@@ -31,9 +31,21 @@ const MegaMenuResources = ({ setIsMegaMenuOpen }) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.2 }}
-            className="fixed left-0 w-full bg-[#F7F9F2] shadow-lg z-40"
-            style={{ top: "80px" }}
+            className="fixed left-0 w-full bg-[#F7F9F2] shadow-lg z-40 overflow-y-auto"
+            style={{ 
+              top: "80px", 
+              maxHeight: "calc(100vh - 80px)",
+              scrollbarWidth: "none", /* Firefox */
+              msOverflowStyle: "none", /* IE/Edge */
+            }}
           >
+            {/* Webkit browsers (Chrome, Safari) */}
+            <style jsx>{`
+              div::-webkit-scrollbar {
+                display: none;
+              }
+            `}</style>
+            
             <div className="container mx-auto px-4 py-8">
               <div className="flex justify-between gap-8">
                 {/* Column 1 - Services */}
@@ -118,7 +130,7 @@ const MegaMenuResources = ({ setIsMegaMenuOpen }) => {
 
                   {/* Right side column */}
                   <div className="flex-1 flex flex-col text-body-alt">
-                    <h3 className=" font-medium mb-4">Customer stories →</h3>
+                    <h3 className="font-medium mb-4">Customer stories →</h3>
                     <div className="flex flex-col gap-6">
                       {/* Card 3 */}
                       <div className="p-4 flex flex-col bg-white/40 rounded-lg hover:bg-white/60 transition">
