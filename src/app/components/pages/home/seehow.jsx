@@ -41,7 +41,7 @@ const SeeHow = () => {
   ];
 
   return (
-    <section className="py-16 bg-body">
+    <section className="lg:py-16 md:py-12 pt-10 bg-body">
       <div className="container mx-auto flex flex-col gap-16 px-4">
         {/* Heading */}
         <div className="space-y-4 text-button-text">

@@ -34,12 +34,13 @@ function HorizontalSlider({ images, direction = "left", speed = 30 }) {
       >
         {imageList.map((img, idx) => (
           <div key={idx} className="mx-1 sm:mx-2 flex-shrink-0">
-            <div className="relative w-24 h-20 sm:w-36 sm:h-28 md:w-48 md:h-36 lg:w-56 lg:h-44 xl:w-60 xl:h-48">
+            <div className="relative w-40 h-48 sm:w-48 sm:h-56 md:w-56 md:h-64 lg:w-64 lg:h-72 xl:w-72 xl:h-80">
               <Image
                 src={img.src}
                 alt={img.alt}
                 fill
                 className="object-cover rounded-lg shadow-lg transition-transform duration-700 hover:scale-105"
+                sizes="(max-width: 640px) 160px, (max-width: 768px) 192px, (max-width: 1024px) 224px, 256px"
               />
             </div>
           </div>
@@ -115,7 +116,7 @@ function ParallaxColumn({ images, direction = "up", speed = 20, scrollDirection,
 
   return (
     <motion.div 
-      className="flex flex-col overflow-hidden relative w-28 sm:w-40 md:w-52 lg:w-56 xl:w-60"
+      className="flex flex-col overflow-hidden relative w-32 sm:w-44 md:w-56 lg:w-64 xl:w-72"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: columnDelay, ease: "easeOut" }}
@@ -127,7 +128,7 @@ function ParallaxColumn({ images, direction = "up", speed = 20, scrollDirection,
         {imageList.map((img, idx) => (
           <motion.div
             key={idx}
-            className="mb-3 flex-shrink-0 relative h-28 sm:h-40 md:h-52 lg:h-60 xl:h-72 w-full"
+            className="mb-4 flex-shrink-0 relative h-48 sm:h-56 md:h-64 lg:h-72 xl:h-80 w-full"
             whileHover={{ scale: 1.03 }}
             transition={{ duration: 0.3 }}
           >
@@ -136,6 +137,7 @@ function ParallaxColumn({ images, direction = "up", speed = 20, scrollDirection,
               alt={img.alt}
               fill
               className="object-cover rounded-lg shadow-lg"
+              sizes="(max-width: 640px) 128px, (max-width: 768px) 176px, (max-width: 1024px) 224px, 256px"
             />
           </motion.div>
         ))}
@@ -282,6 +284,7 @@ const Hero = () => {
                   images={images1} 
                   direction={getColumnDirection(0)} 
                   speed={25} 
+                  fill
                   scrollDirection={scrollDirection}
                   columnIndex={0}
                 />
@@ -289,6 +292,7 @@ const Hero = () => {
                   images={images2} 
                   direction={getColumnDirection(1)} 
                   speed={30} 
+                  fill
                   scrollDirection={scrollDirection}
                   columnIndex={1}
                 />
@@ -296,13 +300,14 @@ const Hero = () => {
                   images={images3} 
                   direction={getColumnDirection(2)} 
                   speed={20} 
+                  fill
                   scrollDirection={scrollDirection}
                   columnIndex={2}
                 />
               </div>
 
               {/* Mobile/Tablet: Horizontal Sliders */}
-              <div className="relative flex flex-col lg:hidden gap-6 w-full mt-8 overflow-hidden">
+              <div className="relative flex flex-col lg:hidden gap-3 w-full mt-8 overflow-hidden">
                 {/* Gradient overlays */}
                 <div className="pointer-events-none absolute top-0 left-0 h-full w-12 sm:w-16 md:w-20 z-20 bg-gradient-to-r from-background to-transparent" />
                 <div className="pointer-events-none absolute top-0 right-0 h-full w-12 sm:w-16 md:w-20 z-20 bg-gradient-to-l from-background to-transparent" />
