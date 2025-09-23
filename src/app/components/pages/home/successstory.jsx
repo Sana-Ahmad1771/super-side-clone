@@ -42,10 +42,10 @@ const SuccessStory = () => {
                   SUCCESS STORY
                 </span>
               </div>
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal mb-2 md:mb-3 max-w-sm">
+              <h5 className="text-body mb-2 md:mb-3 max-w-sm">
                 "It makes me look good:" How Forter uses Superside to turn ideas
                 into reality super efficiently.
-              </h2>
+              </h5>
             </div>
             <button
               onClick={() => openVideo("/successstory-1.mp4")}
@@ -89,10 +89,10 @@ const SuccessStory = () => {
                   SUCCESS STORY
                 </span>
               </div>
-              <h4 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal mb-2 md:mb-3 max-w-sm ">
+              <h5 className="text-body mb-2 md:mb-3 max-w-sm ">
                 "Hassle-free:" Why Palo Alto Networks uses Superside for scale
                 and creativity on social.
-              </h4>
+              </h5>
             </div>
             <button
               onClick={() => openVideo("/successstory-2.mp4")}

@@ -13,8 +13,8 @@ export default function Footer() {
         <div className=" container mx-auto px-6 lg:px-12 py-10 ">
           {/* Heading + CTA */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-medium leading-snug">
-              Your <span className="italic">creative team’s</span> <br />
+            <h2 className="text-body lg:leading-16">
+              Your <span className="instrument-serif-regular-italic text-[34px] sm:text-[39px] md:text-[49px] lg:text-[59px] xl:text-[64px]">creative team’s</span> <br className="hidden sm:block"/>
               creative team™
             </h2>
             <button className="mt-6 bg-[#ccff66] text-black px-6 py-3 rounded-full text-sm font-medium hover:bg-[#b3ff33] transition">
@@ -26,7 +26,7 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 border-t border-gray-500 pt-10">
             {/* Services */}
             <div>
-              <h3 className="font-semibold mb-4">Services</h3>
+              <h6 className="text-body mb-4">Services</h6>
               <ul className="space-y-2 text-sm text-gray-300">
                 <li className="font-medium">Creative design services ↗</li>
                 <li>Ad creative</li>
@@ -45,22 +45,22 @@ export default function Footer() {
 
             {/* Specialized production */}
             <div>
-              <h3 className="font-semibold mb-4">
+              <h6 className="text-body mb-4">
                 Specialized production services ↗
-              </h3>
+              </h6>
               <ul className="space-y-2 text-sm text-gray-300">
                 <li>Video production</li>
                 <li>Motion design</li>
                 <li>Immersive design</li>
               </ul>
 
-              <h3 className="font-semibold mt-6 mb-4">AI services</h3>
+              <h6 className="text-body mt-6 mb-4">AI services</h6>
               <ul className="space-y-2 text-sm text-gray-300">
                 <li>AI-powered creative</li>
                 <li>AI consulting</li>
               </ul>
 
-              <h3 className="font-semibold mt-6 mb-4">Marketing services ↗</h3>
+              <h6 className="text-body mt-6 mb-4">Marketing services ↗</h6>
               <ul className="space-y-2 text-sm text-gray-300">
                 <li>Marketing strategy</li>
               </ul>
@@ -68,7 +68,7 @@ export default function Footer() {
 
             {/* Navigation */}
             <div>
-              <h3 className="font-semibold mb-4">Navigation</h3>
+              <h6 className="text-body mb-4">Navigation</h6>
               <ul className="space-y-2 text-sm text-gray-300">
                 <li className="font-medium">Main</li>
                 <li>Our work</li>
@@ -84,7 +84,7 @@ export default function Footer() {
 
             {/* Learn */}
             <div>
-              <h3 className="font-semibold mb-4">Learn</h3>
+              <h6 className="text-body mb-4">Learn</h6>
               <ul className="space-y-2 text-sm text-gray-300">
                 <li>Blog</li>
                 <li>Events & Summits</li>

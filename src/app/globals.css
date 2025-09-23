@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
 
 /* === Superside Theme === */
 :root {
@@ -33,6 +34,40 @@ body {
   color: var(--color-body);
   font-family: var(--font-sans);
 }
+
+.instrument-serif-regular {
+  font-family: "Instrument Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.instrument-serif-regular-italic {
+  font-family: "Instrument Serif", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+/* === Global Headings === */
+@layer base {
+  h1 {
+    @apply font-serif text-[35px] sm:text-[45px] md:text-[55px] lg:text-[65px] xl:text-[70px] font-normal leading-tight text-[color:var(--color-heading)];
+  }
+  h2 {
+    @apply font-serif text-[30px] sm:text-[35px] md:text-[45px] lg:text-[55px] xl:text-[60px] font-normal leading-16 text-[color:var(--color-body-alt)];
+  }
+  h3 {
+    @apply font-serif text-[20px] sm:text-[25px] md:text-[35px] lg:text-[45px] xl:text-[50px] font-normal leading-snug text-[color:var(--color-body-alt)];
+  }
+  h4 {
+    @apply font-serif text-[12px] sm:text-[15px] md:text-[25px] lg:text-[35px] xl:text-[40px] font-normal leading-snug text-[color:var(--color-heading)];
+  }
+  h5 {
+    @apply font-serif text-[14px] sm:text-[18px] md:text-[22px] lg:text-[26px] xl:text-[36px]  font-normal leading-snug text-[color:var(--color-body-alt)];
+  }
+  h6 {
+    @apply font-serif text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[22px] font-normal leading-snug text-[color:var(--color-body-alt)];
+  }
+}
+
 
 /* === Animations === */
 

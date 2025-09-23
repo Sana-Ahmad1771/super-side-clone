@@ -249,8 +249,8 @@ const Hero = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <h1 className="lg:text-[64px] xl:max-w-[800px] md:text-[55px] text-[32px] break-words font-sans font-normal leading-tight text-heading">
-                Your <span className="italic lg:text-[68px]">creative team's</span> creative
+              <h1 className="xl:text-[72px] lg:text-[64px] xl:max-w-[700px] md:text-[55px] text-[32px] break-words font-sans font-normal leading-tight text-heading">
+                Your <span className="instrument-serif-regular-italic xl:text-[74px] lg:text-[66px] md:text-[59px] text-[36px]"><em>creative team's</em></span> creative
                 team™
               </h1>
               <motion.p 

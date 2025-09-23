@@ -53,9 +53,9 @@ const HighTec = () => {
           {/* Heading */}
           <div className="text-center space-y-4 container mx-auto">
             <p className="uppercase">OUR WORK</p>
-            <h2 className="text-[24px] md:text-[32px] lg:text-[40px] xl:text-[60px] lg:leading-16 ">
-              From high tech to high <br /> fashion{" "}
-              <span className="italic text-[28px] md:text-[36px] lg:text-[44px] xl:text-[64px]">
+            <h2 className="lg:leading-16">
+              From high tech to high <br className="hidden sm:block"/> fashion{" "}
+              <span className="instrument-serif-regular-italic text-[34px] sm:text-[39px] md:text-[49px] lg:text-[59px] xl:text-[64px]">
                  and beyond
               </span>
             </h2>
@@ -65,7 +65,7 @@ const HighTec = () => {
           <div className="w-full mt-6 lg:mt-0 flex justify-center">
             <motion.div
               style={{ scale, width, height, opacity }}
-              className="relative cursor-pointer group flex items-center justify-center max-h-[85vh]"
+              className="relative cursor-pointer group flex items-center justify-center lg:max-h-[85vh] md:max-h-[75vh] max-h-[40vh] overflow-hidden rounded-2xl shadow-lg"
               onClick={openVideo}
             >
               <video

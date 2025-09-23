@@ -7,9 +7,9 @@ const SuccessInNumbers = () => {
         <p className="uppercase tracking-wide text-xs sm:text-sm">
           Success in numbers
         </p>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal">
-          The best return on{" "}
-          <span className="italic font-serif">your investment</span>
+        <h2 className="text-body ">
+          The best return on{" "} <br className="hidden sm:block"/>
+          <span className="instrument-serif-regular-italic text-[34px] sm:text-[39px] md:text-[49px] lg:text-[59px] xl:text-[64px]">your investment</span>
         </h2>
       </div>
 
@@ -21,7 +21,7 @@ const SuccessInNumbers = () => {
             Startup, enterprises and mid-market companies trust Superside to
             deliver pixel-perfect creative, at scale.
           </p>
-          <p className="text-4xl italic sm:text-5xl md:text-6xl font-serif order-1 sm:order-2">
+          <p className="text-4xl instrument-serif-regular-italic sm:text-5xl md:text-6xl font-serif order-1 sm:order-2">
             500+
           </p>
         </div>
@@ -33,7 +33,7 @@ const SuccessInNumbers = () => {
           >
             Projects delivered to this day and counting.
           </p>
-          <p className="text-4xl italic sm:text-5xl md:text-6xl font-serif order-1 sm:order-2">
+          <p className="text-4xl instrument-serif-regular-italic sm:text-5xl md:text-6xl font-serif order-1 sm:order-2">
             70k+
           </p>
         </div>
@@ -50,7 +50,7 @@ const SuccessInNumbers = () => {
             </p>
           </div>
           <div className="order-1 sm:order-2 flex-shrink-0">
-            <p className="text-4xl italic sm:text-5xl md:text-6xl font-serif ">
+            <p className="text-4xl instrument-serif-regular-italic  sm:text-5xl md:text-6xl font-serif ">
               94%
             </p>
           </div>
@@ -68,7 +68,7 @@ const SuccessInNumbers = () => {
             </p>
           </div>
           <div className="order-1 sm:order-2 flex-shrink-0 italic">
-            <p className="text-4xl italic sm:text-5xl md:text-6xl font-serif">
+            <p className="text-4xl instrument-serif-regular-italic sm:text-5xl md:text-6xl font-serif">
               6 months
             </p>
           </div>

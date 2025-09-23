@@ -50,9 +50,9 @@ const MegaMenuResources = ({ setIsMegaMenuOpen }) => {
               <div className="flex justify-between gap-8">
                 {/* Column 1 - Services */}
                 <div className="w-1/3 flex flex-col">
-                  <h3 className="text-body-alt py-1 font-medium inline-block mb-4">
+                  <h6 className="text-body-alt py-1 font-medium inline-block mb-4">
                     Creative design services →
-                  </h3>
+                  </h6>
                   <ul className="flex flex-col justify-between h-auto text-body-alt">
                     {[
                       {
@@ -90,7 +90,7 @@ const MegaMenuResources = ({ setIsMegaMenuOpen }) => {
                 <div className="w-2/3 flex gap-8">
                   {/* Left side column */}
                   <div className="flex-1 flex flex-col text-body-alt">
-                    <h3 className="font-medium mb-4">Blogs →</h3>
+                    <h6 className="font-medium mb-4">Blogs →</h6>
                     <div className="flex flex-col gap-6">
                       {/* Card 1 */}
                       <div className="p-4 flex flex-col bg-white/40 rounded-lg hover:bg-white/60 transition">
@@ -130,7 +130,7 @@ const MegaMenuResources = ({ setIsMegaMenuOpen }) => {
 
                   {/* Right side column */}
                   <div className="flex-1 flex flex-col text-body-alt">
-                    <h3 className="font-medium mb-4">Customer stories →</h3>
+                    <h6 className="font-medium mb-4">Customer stories →</h6>
                     <div className="flex flex-col gap-6">
                       {/* Card 3 */}
                       <div className="p-4 flex flex-col bg-white/40 rounded-lg hover:bg-white/60 transition">

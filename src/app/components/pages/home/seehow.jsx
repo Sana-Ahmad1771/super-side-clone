@@ -46,9 +46,9 @@ const SeeHow = () => {
         {/* Heading */}
         <div className="space-y-4 text-button-text">
           <p className="uppercase">OUR WORK</p>
-          <h2 className="text-[24px] md:text-[32px] lg:text-[40px] xl:text-[60px] font-normal leading-tight">
+          <h2 className="lg:leading-16">
             See how{" "}
-            <span className="italic text-[28px] md:text-[36px] lg:text-[44px] xl:text-[64px]">
+            <span className="instrument-serif-regular-italic text-[34px] sm:text-[39px] md:text-[49px] lg:text-[59px] xl:text-[64px]">
               top brands
             </span>{" "}
             use Superside
@@ -67,7 +67,7 @@ const SeeHow = () => {
               />
             </div>
             <div className="p-6 flex flex-col gap-2 text-left text-body-alt flex-1">
-              <h3 className="text-xl font-semibold">{cards[0].title}</h3>
+              <h6 className="lg:text-4xl instrument-serif-regular-italic">{cards[0].title}</h6>
               <p>{cards[0].desc}</p>
             </div>
           </div>
@@ -86,7 +86,7 @@ const SeeHow = () => {
                 />
               </div>
               <div className="p-5 flex flex-col gap-2 text-left text-body-alt flex-1">
-                <h3 className="text-lg font-semibold">{card.title}</h3>
+                <h6 className="instrument-serif-regular-italic lg:text-4xl">{card.title}</h6>
                 <p>{card.desc}</p>
               </div>
             </div>
@@ -109,7 +109,7 @@ const SeeHow = () => {
                 />
               </div>
               <div className="p-5 flex flex-col gap-2 text-left text-body-alt flex-1">
-                <h3 className="text-lg font-semibold">{card.title}</h3>
+                <h3 className="instrument-serif-regular-italic lg:text-4xl">{card.title}</h3>
                 <p>{card.desc}</p>
               </div>
             </div>
@@ -125,7 +125,7 @@ const SeeHow = () => {
               />
             </div>
             <div className="p-6 flex flex-col gap-2 text-left text-body-alt flex-1">
-              <h3 className="text-xl font-semibold">{cards[5].title}</h3>
+              <h3 className="instrument-serif-regular-italic lg:text-4xl">{cards[5].title}</h3>
               <p>{cards[5].desc}</p>
             </div>
           </div>

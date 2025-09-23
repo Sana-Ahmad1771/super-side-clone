@@ -52,10 +52,10 @@ const OurDifference = () => {
         </p>
 
         {/* Main Heading */}
-        <h2 className="text-3xl md:text-5xl mt-2 font-normal leading-tight mb-8 sm:mb-10 md:mb-12 lg:mb-16 px-2 sm:px-4">
+        <h2 className=" mt-2 lg:leading-16 mb-8 sm:mb-10 md:mb-12 lg:mb-16 px-2 sm:px-4">
           Superside is the{" "}
-          <span className="italic font-normal">perfect fit</span> for fast
-          moving <br className="hidden sm:block" /> brands
+          <span className="instrument-serif-regular-italic text-[34px] sm:text-[39px] md:text-[49px] lg:text-[59px] xl:text-[64px]">perfect fit</span> for fast  <br className="hidden sm:block" />
+          moving brands
         </h2>
 
         {/* Feature Cards */}

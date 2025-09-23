@@ -38,9 +38,9 @@ const MegaMenu = ({ setIsMegaMenuOpen }) => {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 {/* Column 1 */}
                 <div>
-                  <h3 className="bg-[#D8FF85] px-3 py-1 rounded-md text-[#1E3D69] font-medium inline-block mb-4">
-                    Creative design services →
-                  </h3>
+                  <h6 className="bg-[#D8FF85] px-3 py-1 rounded-md text-[#1E3D69] font-medium inline-block mb-4">
+                    Creative design services
+                  </h6>
                   <ul className="space-y-4 text-body-alt">
                     <li className="flex items-start gap-3">
                       <FaPaintBrush className="text-gray-500 mt-1" />
@@ -74,9 +74,9 @@ const MegaMenu = ({ setIsMegaMenuOpen }) => {
 
                 {/* Column 2 */}
                 <div>
-                  <h3 className="bg-[#3A7D44] text-white px-3 py-1 rounded-md font-medium inline-block mb-4">
-                    Specialized production services →
-                  </h3>
+                  <h6 className="bg-[#3A7D44] text-white px-3 py-1 rounded-md font-medium inline-block mb-4">
+                    Specialized production services
+                  </h6>
                   <ul className="space-y-4 text-body-alt">
                     <li className="flex items-start gap-3">
                       <FaVideo className="text-gray-500 mt-1" />
@@ -101,9 +101,9 @@ const MegaMenu = ({ setIsMegaMenuOpen }) => {
 
                 {/* Column 3 */}
                 <div>
-                  <h3 className="bg-[#1E3D69] text-white px-3 py-1 rounded-md font-medium inline-block mb-4">
-                    AI services →
-                  </h3>
+                  <h6 className="bg-[#1E3D69] text-white px-3 py-1 rounded-md font-medium inline-block mb-4">
+                    AI services
+                  </h6>
                   <ul className="space-y-4 text-body-alt">
                     <li className="flex items-start gap-3">
                       <FaRobot className="text-gray-500 mt-1" />
@@ -128,9 +128,9 @@ const MegaMenu = ({ setIsMegaMenuOpen }) => {
 
                 {/* Column 4 */}
                 <div>
-                  <h3 className="bg-[#D6B370] px-3 py-1 rounded-md font-medium inline-block mb-4">
-                    Marketing services →
-                  </h3>
+                  <h6 className="bg-[#D6B370] px-3 py-1 rounded-md font-medium inline-block mb-4">
+                    Marketing services
+                  </h6>
                   <ul className="space-y-4 text-body-alt">
                     <li className="flex items-start gap-3">
                       <FaBullhorn className="text-gray-500 mt-1" />

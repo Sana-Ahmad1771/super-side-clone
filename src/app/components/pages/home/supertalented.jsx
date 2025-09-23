@@ -71,9 +71,9 @@ const CardSection = () => (
   <section className="lg:py-40 py-20 px-6  ">
     <div className="text-center space-y-4 container mx-auto lg:pb-20">
       <p className="uppercase">made to flex</p>
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal mx-auto">
-        Supertalented. Superfast. Super responsive. Work with a <br /> global team that's purposefully <span className="italic text-[22px] md:text-[30px] lg:text-[33px] xl:text-[34px]">made to keep up with you.</span>
-      </h2>
+      <h5 className="text-body mx-auto">
+        Supertalented. Superfast. Super responsive. Work with a <br className="hidden sm:block"/> global team that's purposefully <span className="instrument-serif-regular-italic text-[16px] sm:text-[22px] md:text-[26px] lg:text-[30px] xl:text-[40px]">made to keep up with you.</span>
+      </h5>
     </div>
     <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 py-10 h-auto">
       <HoverCard

@@ -17,15 +17,15 @@ const Support = () => {
           </p>
 
           <div className="flex flex-col gap-4 md:gap-6">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-[45px] xl:text-[55px] leading-tight md:leading-normal lg:leading-tight max-w-full">
+            <h2 className="tracking-tight lg:leading-16  max-w-full">
               The support your creative team{" "}
-              <span className="italic font-serif">has been asking for</span>
+              <span className="instrument-serif-regular-italic text-[34px] sm:text-[39px] md:text-[49px] lg:text-[59px] xl:text-[64px] ">has been asking for</span>
             </h2>
 
-            <p className="text-base md:text-lg lg:text-xl xl:text-2xl font-sans max-w-full leading-relaxed md:leading-relaxed">
+            <h5 className=" max-w-full leading-relaxed md:leading-relaxed">
               Superside is your dedicated, on-call creative team to expand your
               production capacity and extend your team's creative capabilities.
-            </p>
+            </h5>
 
             <p className="text-base md:text-lg font-sans max-w-full leading-relaxed md:leading-relaxed">
               See us as an extension of your team, freeing you to focus on your

@@ -10,10 +10,11 @@ import HighTec from "./components/pages/home/hightec";
 import CreativeWork from "./components/pages/home/creativework";
 import CamparisonSection from "./components/pages/home/comparison";
 import SeeHow from "./components/pages/home/seehow.jsx"
-import TechEnabled from "./components/pages/home/techenabled"
-import OurDifference from "./components/pages/home/ourdifference-cards"
-import WorldScaleClass from "./components/pages/home/world-scale-class.jsx"
-import Footer from "./components/common/footer"
+// import Slider from "./components/pages/home/slider";
+import TechEnabled from "./components/pages/home/techenabled";
+import OurDifference from "./components/pages/home/ourdifference-cards";
+import WorldScaleClass from "./components/pages/home/world-scale-class.jsx";
+import Footer from "./components/common/footer";
 export default function Home() {
   return (
     <>
@@ -28,6 +29,7 @@ export default function Home() {
     <CreativeWork/>
     <CamparisonSection/>
     <SeeHow />
+    {/* <Slider /> */}
     <TechEnabled/>
     <OurDifference />
     <WorldScaleClass/>

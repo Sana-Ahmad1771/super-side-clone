@@ -97,9 +97,9 @@ const TrustedBrands = () => {
     <section className="lg:pt-20 pt-18 bg-body overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="mb-10 text-center">
-          <h2 className="text-xl sm:text-2xl text-body-alt font-medium tracking-wide">
+          <h6 className="text-body-alt tracking-wide">
             Trusted by the world's top brands
-          </h2>
+          </h6>
         </div>
 
         {/* First Row: Right to Left */}

@@ -9,9 +9,9 @@ const TechEnabled = () => {
         <div className="flex flex-col lg:flex-row justify-between max-w-full mb-10 text-body-alt gap-6">
           <div className="max-w-[730px]">
             <p className="uppercase text-sm tracking-wider">Easy & Hassle-Free</p>
-            <h2 className="text-3xl md:text-5xl leading-tight mt-2">
+            <h2 className="lg:leading-16 mt-2">
               Tech enabled and made to{" "}
-              <span className="italic font-normal">work for you.</span>
+              <span className="instrument-serif-regular-italic text-[34px] sm:text-[39px] md:text-[49px] lg:text-[59px] xl:text-[64px]">work for you.</span>
             </h2>
           </div>
           <div className="flex lg:justify-end lg:items-end">
@@ -32,9 +32,9 @@ const TechEnabled = () => {
               <div className="flex-1 rounded-2xl relative bg-buttonbg p-6 text-body-alt flex flex-col justify-between h-[200px] md:h-[300px] lg:h-full">
                 <div className="z-10 relative">
                   <Pencil className="w-6 h-6" />
-                  <h3 className="text-xl font-semibold mt-3">
+                  <h6 className=" font-semibold mt-3">
                     From brief to review and sign off.
-                  </h3>
+                  </h6>
                   <p className="text-sm mt-2">
                     Welcome to Superspace. Quickly submit a brief, review in
                     platform, keep track of usage and more in one easy place.
@@ -55,9 +55,9 @@ const TechEnabled = () => {
               >
                 <div className="z-10 relative">
                   <Slack className="w-6 h-6" />
-                  <h3 className="text-xl font-semibold mt-3">
+                  <h6 className="font-semibold mt-3">
                     Integrate with your favorite platforms.
-                  </h3>
+                  </h6>
                   <p className="text-sm mt-2">
                     Already using platforms like Asana/Jira/Slack? They integrate too.
                   </p>
@@ -77,9 +77,9 @@ const TechEnabled = () => {
             >
               <div className="z-10 relative">
                 <FolderKanban className="w-6 h-6" />
-                <h3 className="text-xl font-semibold mt-3">
+                <h6 className="text-body font-semibold mt-3">
                   Learn from our customers' successful projects
-                </h3>
+                </h6>
                 <p className="text-sm mt-2">
                   Reference work from the world's best brands on our platform.
                 </p>
@@ -100,9 +100,9 @@ const TechEnabled = () => {
             >
               <div className="z-10 relative">
                 <FolderKanban className="w-6 h-6" />
-                <h3 className="text-xl font-semibold mt-3">
+                <h6 className="text-body font-semibold mt-3">
                   Organize and share all your brand assets
-                </h3>
+                </h6>
                 <p className="text-sm mt-2">
                   Stop searching—store and organize everything on our platform.
                 </p>
